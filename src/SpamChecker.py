@@ -54,8 +54,8 @@ def extract_features(mail_dir):
                     words = line.split()
                     for word in words:
                         word_id = 0
-                        for i, id in enumerate(dictionary):   
-                            if id[0] == word:
+                        for i, d in enumerate(dictionary):   
+                            if d[0] == word:
                                 word_id = i
                                 features_matrix[doc_id, word_id] = words.count(word)  
             doc_id += 1
@@ -72,7 +72,7 @@ dictionary = make_Dictionary(train_dir)
 
 print("\nExtracting Features!")
 train_labels = np.zeros(702)
-train_labels[351:701] = 1
+train_labels[351:702] = 1
 
 #get features from data
 train_matrix = extract_features(train_dir)
@@ -94,6 +94,9 @@ result2 = svc_model.predict(test_matrix)
 
 print("Our results are as follows:")
 print("0 represents no spam and 1 represents spam")
+
+#print(train_labels)
+#print(test_labels)
 print(result1)
 print(result2)
 
