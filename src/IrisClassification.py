@@ -1,36 +1,15 @@
 '''
-Created on Dec 02, 2017
+Created on Nov 29, 2017
 
 @author: fernando
 '''
 import pandas
 
 
-print("Project to analyse Pima Indians Diabetes data!")
+print("Project to analyse Iris data!")
 
-url = "https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data"
-
-'''
-names = ['Number of times pregnant',
-   'Plasma glucose concentration a 2 hours in an oral glucose tolerance test',
-   'Diastolic blood pressure (mm Hg)',
-   'Triceps skin fold thickness (mm)',
-   '2-Hour serum insulin (mu U/ml)',
-   'Body mass index (weight in kg/(height in m)^2)',
-   'Diabetes pedigree function',
-   'Age (years)',
-   'Class variable (0 or 1)']
-'''
-names = ['pregnant',
-   'Plasma glucose',
-   'blood pressure',
-   'Triceps skin',
-   'insulin',
-   'BMI',
-   'Diabetes pedigree',
-   'Age',
-   'Class']
-
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+names = ['sepal-lenght', 'sepal-width', 'petal-lenght', 'petal-width', 'class']
 print("\nDownloading data from \n%s" % url)
 dataset = pandas.read_csv(url, names = names)
 pandas.set_option('display.width',100)
@@ -53,17 +32,3 @@ print(dataset.corr(method='pearson'))
 
 print("\nSkew for data")
 print(dataset.skew())
-
-#Data visualization
-import matplotlib.pyplot as plt
-from pandas.plotting import scatter_matrix
-
-dataset.plot(kind='box',subplots=True, layout=(3,3),sharex=False,sharey=False)
-#plt.show()
-
-dataset.hist()
-#plt.show()
-
-scatter_matrix(dataset)
-plt.show()
-
