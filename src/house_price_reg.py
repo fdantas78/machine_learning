@@ -100,16 +100,12 @@ filename = '../data/insurance.csv'
 data = load_csv(filename)
 for i in range(len(data[0])):
     str_column_to_float(data, i)
-split = 10
-while split < 100:
+
+for split in range(10,100,10):
     #print(split)
     rsme = evaluate_algorithm(data, simple_linear_regression, split/100, 0)
     rsme2 = evaluate_algorithm(data, simple_linear_regression, split/100, 1)
     
     #comparison between calculated vs in flie values
     print("Train data: %s%% RMSE seq: %.3f RMSE random: %.3f" % (split,rsme, rsme2))
-    
-    split += 10
-
-
 
